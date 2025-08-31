@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Aluno {
+public class Aluno{
 	
 	//properties
 	private int matricula;
@@ -63,14 +63,13 @@ public class Aluno {
 	@Override
 	public String toString() {
 		return "Aluno [" + 
-				"matricula=" + this.matricula + 
-				", nome=" + this.nome + 
-				", nascimento=" + this.nascimento.toString() + 
-				", curso=" + this.curso + 
-				", periodo=" + this.periodo +
+				"matricula=" + this.getMatricula() + 
+				", nome=" + this.getNome() + 
+				", nascimento=" + this.getNascimento().toString() + 
+				", curso=" + this.getCurso() + 
+				", periodo=" + this.getPeriodo() +
 				"]";
 	}
-	
 	
 	
 }

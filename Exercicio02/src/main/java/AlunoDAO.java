@@ -27,7 +27,7 @@ public class AlunoDAO extends DAO{
 	}
 	
 	public Aluno[] getAlunos() {
-		return this.<Aluno[]>sendReadableQuery("SELECT * FROM aluno", (ResultSet rs) -> {
+		return this.<Aluno[]>sendReadableQuery("SELECT * FROM aluno;", (ResultSet rs) -> {
 			Aluno[] alunos = null;
 			if(rs.next()){
 				rs.last();
@@ -39,6 +39,15 @@ public class AlunoDAO extends DAO{
 				}
 			}
 			return alunos;
+		});
+	}
+	public Aluno getAluno(int matricula) {
+		return this.<Aluno>sendReadableQuery("SELECT * FROM aluno WHERE matricula = " + matricula + ";", (ResultSet rs) ->{
+			Aluno aluno = null;
+			if(rs.next()) {
+				aluno = new Aluno(rs.getInt("matricula"), rs.getString("nome"), rs.getDate("nascimento").toLocalDate(), rs.getString("curso"), rs.getInt("periodo"));
+			}
+			return aluno;
 		});
 	}
 }

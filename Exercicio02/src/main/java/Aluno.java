@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Aluno{
 	
@@ -51,6 +52,10 @@ public class Aluno{
 	}
 	public void setNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
+	}
+	public void setNascimento(String nascimentoStr, String format) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+		this.nascimento = LocalDate.parse(nascimentoStr, formatter);
 	}
 	public void setCurso(String curso) {
 		this.curso = curso;
